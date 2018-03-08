@@ -36,6 +36,7 @@ $(function() {
 
         resetVideoHeight();
      });
+      $(".search").val("");
   });
   
   $(window).on("resize", resetVideoHeight);
@@ -109,6 +110,7 @@ $(document).on("click", ".resultBtn", function(){
       resetResults();
     break
     case "save":
+      // call function to hit endpoint
     break
 
   }
