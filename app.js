@@ -22,7 +22,7 @@ var ytResults;
           //console.log(response);
           ytResults = response.items;
           console.log(results)
-          var current = [results[0]]
+          var current = [ytResults[0]]
           var index = 0;
           displayVideo(current, index)
 
@@ -38,6 +38,11 @@ function displayVideo(current, i){
     var ytWrap = $("<div>")
     ytWrap.attr("data-video", i)
     console.log(current)
+    
+
+
+
+    
   $.each(current, function(index, item) {
     console.log(index, item);
     $.get("item.html", function(data) {
