@@ -116,6 +116,7 @@ function nextYoutube(){
       var i = current+1
       if (current === 3){
         $(".nextBtn").addClass("hide");
+        return
       }else {
         $(".nextBtn").removeClass("hide");
         displayVideo(next, i);
