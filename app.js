@@ -19,46 +19,43 @@ function tplawesome(e,t){
   }return res
 }
 
-function doWhatUserWants(){
-  $("form").on("submit", function(e) {
-     e.preventDefault();
-     // prepare the request
-     $("#results").append(`
-        <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
-      `)
-     $("#submit").text("loading....")
-     console.log(selectedCat);
-      switch(selectedCat){
+$("form").on("submit", function(e) {
+   e.preventDefault();
+   // prepare the request
+   $("#results").append(`
+      <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
+    `)
+   $("#submit").text("loading....")
+   console.log(selectedCat);
+    switch(selectedCat){
 
-          case "youtube":
-          console.log(selectedCat);
-            var request = gapi.client.youtube.search.list({
-            part: "snippet",
-            type: "video",
-            q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-            maxResults: 3,
-            order: "viewCount",
-            publishedAfter: "2015-01-01T00:00:00Z"
-           }); 
-           // execute the request
-            request.execute(function(response) {
-              $("#search").val("");
-              //console.log(response);
-              ytResults = response.items;
-              console.log(results)
-              var current = [ytResults[0]]
-              var index = 0;
-              displayVideo(current, index)
+        case "youtube":
+        console.log(selectedCat);
+          var request = gapi.client.youtube.search.list({
+          part: "snippet",
+          type: "video",
+          q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+          maxResults: 3,
+          order: "viewCount",
+          publishedAfter: "2015-01-01T00:00:00Z"
+         }); 
+         // execute the request
+          request.execute(function(response) {
+            $("#search").val("");
+            //console.log(response);
+            ytResults = response.items;
+            console.log(results)
+            var current = [ytResults[0]]
+            var index = 0;
+            displayVideo(current, index)
 
-              resetVideoHeight();
-              $(window).on("resize", resetVideoHeight);
-           });
-          break;
-      }
-  });
-  
- 
-}
+            resetVideoHeight();
+            $(window).on("resize", resetVideoHeight);
+         });
+        break;
+    }
+});
+
 
 
 function displayVideo(current, i){
