@@ -22,7 +22,6 @@
         //console.log(response);
 
         var results = response.items;
-        $("#results").html("");
         console.log(results);
         var ytWrap = $("<div>")
         ytWrap.attr("data-video", 0)
@@ -31,9 +30,9 @@
           $("#results").html("");
           $.each(current, function(index, item) {
             $.get("item.html", function(data) {
-                $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+                $("ytWrap").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
             });
-            return
+            $("#results").append(ytWrap);
           });
           resetVideoHeight();
        });
