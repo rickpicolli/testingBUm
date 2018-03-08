@@ -2,6 +2,15 @@
 // require("dotenv").config();
 // var keys = require("./keys.js");
 var ytResults = null;
+var selectedCat = null;
+
+
+$(document).on("click", ".catBtn", function(){
+  selectedCat = $(this).data("category");
+  $(".search-wrap").removeClass("hide")
+})
+
+
 
 function tplawesome(e,t){
   res=e;for(var n=0;n<t.length;n++){
@@ -11,8 +20,7 @@ function tplawesome(e,t){
   }return res
 }
 
-// on submit for youtube
-$(function() {
+function youTubeForm(){
   $("form").on("submit", function(e) {
      e.preventDefault();
      // prepare the request
@@ -44,11 +52,12 @@ $(function() {
   });
   
   $(window).on("resize", resetVideoHeight);
-});
+}
+
 
 function displayVideo(current, i){
-   $("#submit").text("search")
-  $("#results").empty();
+  $("#submit").text("search")
+   $("#results").empty();
     var $ytWrap = $("<div>")
     $ytWrap.addClass("currentVideo")
     $ytWrap.attr("data-video", i)
