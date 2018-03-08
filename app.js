@@ -31,8 +31,8 @@
           $.each(results, function(index, item) {
             $.get("item.html", function(data) {
                 $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
-                break
             });
+            return
           });
           resetVideoHeight();
        });
