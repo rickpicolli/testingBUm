@@ -22,15 +22,21 @@
         //console.log(response);
 
         var results = response.items;
-
+        $("#results").html("");
         console.log(results);
-        //   $("#results").html("");
-        //   $.each(results.items, function(index, item) {
-        //     $.get("item.html", function(data) {
-        //         $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
-        //     });
-        //   });
-        //   resetVideoHeight();
+        var ytWrap = $("<div>")
+        ytWrap.attr("data-video", 0)
+        $.get("item.html", function(data) {
+                $("#results").append(tplawesome(data, [{"title":results[0]snippet.title, "videoid":results[0]id.videoId}]));
+        });
+
+          // $("#results").html("");
+          // $.each(results.items, function(index, item) {
+          //   $.get("item.html", function(data) {
+          //       $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+          //   });
+          // });
+          resetVideoHeight();
        });
     });
     
