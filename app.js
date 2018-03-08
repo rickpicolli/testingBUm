@@ -54,7 +54,7 @@ function displayVideo(current, i){
         $($ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
     });
     // save wrapper with result buttons to a variable
-    var btns = createButtons()
+    var btns = createButtons(i)
     // ad video then wrap with buttons to page
     $("#results").append($ytWrap, btns);
 
@@ -62,11 +62,16 @@ function displayVideo(current, i){
 }
 
 // create buttons for results and add them to a wrapper
-function createButtons(){
+function createButtons(i){
   var $btnWrap = $("<div>").addClass("resBtnWrap");
 
   var $next = $("<button>")
   $next.text("next").addClass("resultBtn nextBtn")
+  if(i<3){
+    $next.addClass("hide");
+  }else{
+    $next.removeClass("hide");
+  }
   
   var $clear = $("<button>")
   $clear.text("clear").addClass("resultBtn clearBtn")
@@ -114,12 +119,9 @@ function nextYoutube(){
       var current = $(".currentVideo").data("video");
       var next = [ytResults[current+1]]
       var i = current+1
-      if(current < 3){
+      if(current < 2){
         $(".nextBtn").removeClass("hide");
         displayVideo(next, i);
-      }else {
-        $(".nextBtn").addClass("hide");
-        return
       }
       // if (current === 3){
         
