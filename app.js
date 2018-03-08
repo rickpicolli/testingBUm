@@ -54,8 +54,8 @@ function displayVideo(current, i){
 
 // create buttons for results and add them to a wrapper
 function createButtons(){
-  var $btnWrap = ("<div>").addClass("resBtnWrap");
-  
+  var $btnWrap = $("<div>").addClass("resBtnWrap");
+
   var $next = $("<button>")
   $next.text("next").addClass("resultBtn nextBtn")
   
