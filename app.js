@@ -26,17 +26,17 @@ $(function() {
      }); 
      // execute the request
       request.execute(function(response) {
-
+        $(".search").val("");
         //console.log(response);
         ytResults = response.items;
         console.log(results)
         var current = [ytResults[0]]
         var index = 0;
         displayVideo(current, index)
-
+        
         resetVideoHeight();
      });
-      $(".search").val("");
+      
   });
   
   $(window).on("resize", resetVideoHeight);
