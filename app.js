@@ -16,6 +16,9 @@ $(function() {
   $("form").on("submit", function(e) {
      e.preventDefault();
      // prepare the request
+     $("result").append(`
+        <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
+      `)
      var request = gapi.client.youtube.search.list({
           part: "snippet",
           type: "video",
@@ -43,7 +46,7 @@ $(function() {
 });
 
 function displayVideo(current, i){
-  $("#results").html("");
+  $("#results").empty();
     var $ytWrap = $("<div>")
     $ytWrap.addClass("currentVideo")
     $ytWrap.attr("data-video", i)
