@@ -38,20 +38,33 @@ function displayVideo(current, i){
     var ytWrap = $("<div>")
     ytWrap.attr("data-video", i)
     console.log(current)
-    
 
-
-
-    
   $.each(current, function(index, item) {
     console.log(index, item);
     $.get("item.html", function(data) {
         $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
     });
-    $("#results").append(ytWrap);
+    var btns = createButtons()
+    $("#results").append(ytWrap, btns);
+
   });
 }
 
+function createButtons(){
+  var $btnWrap = ("<div>");
+  $btnWrap.addClass("resBtnWrap");
+
+  var $next = $("<button>")
+  $next.text("next").addClass("resultBtn nextBtn")
+  
+  var $clear = $("<button>")
+  $clear.text("clear").addClass("resultBtn clearBtn")
+  
+  var $save = $("<button>")
+  $save.text("save").addClass("resultBtn saveBtn")
+
+  return $($btnWrap).append($next, $clear, $save)
+}
 
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
