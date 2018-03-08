@@ -67,7 +67,7 @@ function createButtons(i){
 
   var $next = $("<button>")
   $next.text("next").addClass("resultBtn nextBtn")
-  if(i<3){
+  if(i === 3){
     $next.addClass("hide");
   }else{
     $next.removeClass("hide");
@@ -119,13 +119,8 @@ function nextYoutube(){
       var current = $(".currentVideo").data("video");
       var next = [ytResults[current+1]]
       var i = current+1
-      if(current < 2){
+      if(current < 3){
         $(".nextBtn").removeClass("hide");
         displayVideo(next, i);
       }
-      // if (current === 3){
-        
-      // }else {
-        
-      // }
 }
