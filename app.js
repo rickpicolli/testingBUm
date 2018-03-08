@@ -25,7 +25,7 @@ $("form").on("submit", function(e) {
    $("#results").append(`
       <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
     `)
-   $("#submit").text("loading....")
+   $("#submit").val("loading....")
    console.log(selectedCat);
     switch(selectedCat){
 
@@ -59,7 +59,7 @@ $("form").on("submit", function(e) {
 
 
 function displayVideo(current, i){
-  $("#submit").text("search")
+  $("#submit").val("search")
    $("#results").empty();
     var $ytWrap = $("<div>")
     $ytWrap.addClass("currentVideo")
