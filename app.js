@@ -1,7 +1,7 @@
 // <script type="text/javascript">
 // require("dotenv").config();
 // var keys = require("./keys.js");
-var ytResults;
+var ytResults = null;
 
 function tplawesome(e,t){
   res=e;for(var n=0;n<t.length;n++){
@@ -106,6 +106,7 @@ $(document).on("click", ".resultBtn", function(){
       // stop 
     break;
     case "clear":
+      resetResults();
     break
     case "save":
     break
@@ -123,4 +124,10 @@ function nextYoutube(){
         $(".nextBtn").removeClass("hide");
         displayVideo(next, i);
       }
+}
+
+function resetResults(){
+  ytResults = null;
+  $("#results").empty();
+  // hide inout
 }
