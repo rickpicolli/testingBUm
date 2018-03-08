@@ -114,9 +114,9 @@ function nextYoutube(){
       var current = $(".currentVideo").data("video");
       var next = [ytResults[current+1]]
       var i = current+1
-      if (current < 3){
-        displayVideo(next, i);
+      if (current = 3){
+        $(".nextBtn").addClass("hide");
       }else {
-        return
+        displayVideo(next, i);
       }
 }
