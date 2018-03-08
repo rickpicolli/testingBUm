@@ -234,6 +234,7 @@ function resetResults(){
         success: function (result) {
           console.log(result);
         }
+    })
   }
 /*//////////////////////END SPOTIFY ///////////////////////////////*/
 
