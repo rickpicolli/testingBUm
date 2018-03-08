@@ -116,5 +116,7 @@ function nextYoutube(){
       var i = current+1
       if (current < 3){
         displayVideo(next, i);
+      }else {
+        return
       }
 }
