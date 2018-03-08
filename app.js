@@ -17,14 +17,14 @@ var ytResults;
             publishedAfter: "2015-01-01T00:00:00Z"
        }); 
        // execute the request
-       request.execute(function(response) {
+        request.execute(function(response) {
 
-        //console.log(response);
-        ytResults = response.items;
-        console.log(results)
-        current = [results[0]]
-        var index = 0;
-        displayVideo(current, index)
+          //console.log(response);
+          ytResults = response.items;
+          console.log(results)
+          var current = [results[0]]
+          var index = 0;
+          displayVideo(current, index)
 
           resetVideoHeight();
        });
@@ -33,12 +33,13 @@ var ytResults;
     $(window).on("resize", resetVideoHeight);
   });
 
-function displayVideo(current, index){
+function displayVideo(current, i){
   $("#results").html("");
     var ytWrap = $("<div>")
-    ytWrap.attr("data-video", index)
+    ytWrap.attr("data-video", i)
     console.log(current)
   $.each(current, function(index, item) {
+    console.log(index, item);
     $.get("item.html", function(data) {
         $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
     });
