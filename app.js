@@ -88,17 +88,16 @@ function init(){
     });
 }
 
-
+// click for any of the result buttons (next, clear, save)
 $(document).on("click", ".resultBtn", function(){
-  var selectedBtn = $(this).text()
-  var current = $(".currentVideo").data("video");
-  var next = [ytResults[current+1]]
-  var i = current+1
+
+  var selectedBtn = $(this).text();
+
   switch(selectedBtn){
     case "next":
-      if (current < 3){
-        displayVideo(next, i);
-      }
+      // if selected catelgoy is youtube
+      nextYoutube();
+
       // stop 
     break;
     case "clear":
@@ -108,3 +107,14 @@ $(document).on("click", ".resultBtn", function(){
 
   }
 })
+
+
+function nextYoutube(){
+  // youtube 
+      var current = $(".currentVideo").data("video");
+      var next = [ytResults[current+1]]
+      var i = current+1
+      if (current < 3){
+        displayVideo(next, i);
+      }
+}
