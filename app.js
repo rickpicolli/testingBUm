@@ -19,26 +19,26 @@ $(function() {
      $("result").append(`
         <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
       `)
-     var request = gapi.client.youtube.search.list({
-          part: "snippet",
-          type: "video",
-          q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-          maxResults: 3,
-          order: "viewCount",
-          publishedAfter: "2015-01-01T00:00:00Z"
-     }); 
-     // execute the request
-      request.execute(function(response) {
-        $("#search").val("");
-        //console.log(response);
-        ytResults = response.items;
-        console.log(results)
-        var current = [ytResults[0]]
-        var index = 0;
-        displayVideo(current, index)
+     // var request = gapi.client.youtube.search.list({
+     //      part: "snippet",
+     //      type: "video",
+     //      q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+     //      maxResults: 3,
+     //      order: "viewCount",
+     //      publishedAfter: "2015-01-01T00:00:00Z"
+     // }); 
+     // // execute the request
+     //  request.execute(function(response) {
+     //    $("#search").val("");
+     //    //console.log(response);
+     //    ytResults = response.items;
+     //    console.log(results)
+     //    var current = [ytResults[0]]
+     //    var index = 0;
+     //    displayVideo(current, index)
 
-        resetVideoHeight();
-     });
+     //    resetVideoHeight();
+     // });
 
   });
   
