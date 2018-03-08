@@ -44,12 +44,15 @@ function displayVideo(current, i){
     $.get("item.html", function(data) {
         $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
     });
+    // save wrapper with result buttons to a variable
     var btns = createButtons()
+    // ad video then wrap with buttons to page
     $("#results").append(ytWrap, btns);
 
   });
 }
 
+// create buttons for results and add them to a wrapper
 function createButtons(){
   var $btnWrap = ("<div>");
   $btnWrap.addClass("resBtnWrap");
