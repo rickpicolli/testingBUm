@@ -147,6 +147,9 @@ function nextYoutube(){
 
 function resetResults(){
   ytResults = null;
+  selectedCat = null
   $("#results").empty();
+  $(".search-wrap").addClass(hide);
+
   // hide inout
 }
