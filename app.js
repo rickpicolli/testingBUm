@@ -2,7 +2,6 @@
 // require("dotenv").config();
 // var keys = require("./keys.js");
 var ytResults;
-var current;
   function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 
   $(function() {
@@ -25,7 +24,7 @@ var current;
         console.log(results)
         current = [results[0]]
         var index = 0;
-        displayVideo(index)
+        displayVideo(current, index)
 
           resetVideoHeight();
        });
@@ -34,10 +33,11 @@ var current;
     $(window).on("resize", resetVideoHeight);
   });
 
-function displayVideo(index){
+function displayVideo(current, index){
   $("#results").html("");
     var ytWrap = $("<div>")
     ytWrap.attr("data-video", index)
+    console.log(current)
   $.each(current, function(index, item) {
     $.get("item.html", function(data) {
         $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
