@@ -19,11 +19,11 @@
        // execute the request
        request.execute(function(response) {
 
-        console.log(response);
+        //console.log(response);
 
-        var results = response.result;
+        var results = response.items;
 
-          //console.log(results);
+        console.log(results);
         //   $("#results").html("");
         //   $.each(results.items, function(index, item) {
         //     $.get("item.html", function(data) {
