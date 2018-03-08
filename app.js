@@ -26,9 +26,10 @@
         console.log(results);
         var ytWrap = $("<div>")
         ytWrap.attr("data-video", 0)
+        var current = [results[0]]
 
           $("#results").html("");
-          $.each(results, function(index, item) {
+          $.each(current, function(index, item) {
             $.get("item.html", function(data) {
                 $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
             });
