@@ -16,7 +16,7 @@ $(function() {
   $("form").on("submit", function(e) {
      e.preventDefault();
      // prepare the request
-     $("result").append(`
+     $("#results").append(`
         <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
       `)
      // var request = gapi.client.youtube.search.list({
