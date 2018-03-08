@@ -30,7 +30,7 @@
           $("#results").html("");
           $.each(current, function(index, item) {
             $.get("item.html", function(data) {
-                $("ytWrap").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+                $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
             });
             $("#results").append(ytWrap);
           });
