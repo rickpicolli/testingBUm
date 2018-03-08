@@ -228,7 +228,7 @@ function resetResults(){
   function getSong(){
 
     $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/artist/linkin park',
+        url: 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/artist/linkin park/top-tracks',
         method: 'GET',
         headers: { "Authorization": "Bearer " + token },
         success: function (result) {
