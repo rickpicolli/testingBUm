@@ -22,19 +22,22 @@ var current;
 
         //console.log(response);
         ytResults = response.items;
-        console.log(results);
-        var ytWrap = $("<div>")
-        ytWrap.attr("data-video", 0)
+        console.log(results)
         current = [results[0]]
-        displayVideo()
+        var index = 0;
+        displayVideo(index)
+
           resetVideoHeight();
        });
     });
     
     $(window).on("resize", resetVideoHeight);
   });
-function displayVideo(){
+
+function displayVideo(index){
   $("#results").html("");
+    var ytWrap = $("<div>")
+    ytWrap.attr("data-video", index)
   $.each(current, function(index, item) {
     $.get("item.html", function(data) {
         $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
