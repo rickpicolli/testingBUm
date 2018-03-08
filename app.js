@@ -1,7 +1,8 @@
 // <script type="text/javascript">
 // require("dotenv").config();
 // var keys = require("./keys.js");
-
+var ytResults;
+var current;
   function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 
   $(function() {
@@ -20,26 +21,28 @@
        request.execute(function(response) {
 
         //console.log(response);
-
-        var results = response.items;
+        ytResults = response.items;
         console.log(results);
         var ytWrap = $("<div>")
         ytWrap.attr("data-video", 0)
-        var current = [results[0]]
-
-          $("#results").html("");
-          $.each(current, function(index, item) {
-            $.get("item.html", function(data) {
-                $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
-            });
-            $("#results").append(ytWrap);
-          });
+        current = [results[0]]
+        displayVideo()
           resetVideoHeight();
        });
     });
     
     $(window).on("resize", resetVideoHeight);
-});
+  });
+function displayVideo(){
+  $("#results").html("");
+  $.each(current, function(index, item) {
+    $.get("item.html", function(data) {
+        $(ytWrap).append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+    });
+    $("#results").append(ytWrap);
+  });
+}
+
 
 function resetVideoHeight() {
     $(".video").css("height", $("#results").width() * 9/16);
