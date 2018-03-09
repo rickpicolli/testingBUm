@@ -201,14 +201,14 @@ function resetResults(){
 
 
   setInterval(function () {
-    getToke()
+    getToken()
   }, 3600000);
 
   // https://www.base64encode.org/
   // id:secret
 
 
-  function getToke(){
+  function getToken(){
     //  Spotify access token generation
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/api/token",
@@ -224,11 +224,16 @@ function resetResults(){
         }
     });
   }
-  getToke();
-  var query = "linkin park"
+  getToken();
+  var query = $("#search").val();
   var artistId;
+
   function getID(){
-    
+
+    // $("#submit").on("click", function(){
+      var query = $("#search").val();
+    console.log(query);
+
     $.ajax({
         url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${query}&type=artist`,
         method: 'GET',
@@ -250,7 +255,7 @@ function resetResults(){
           //track[0].id
 
           spotResults = tracks.tracks
-          console.log(spotResults);
+          console.log("spotResults" + spotResults);
 
           var current = spotResults[0]
           console.log("crnt",current);
