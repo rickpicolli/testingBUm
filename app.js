@@ -248,10 +248,13 @@ function resetResults(){
         success: function (tracks) {
           console.log(tracks)
           //track[0].id
+
           spotResukts = tracks
+          console.log(spotResukts);
+
           var current = spotResukts[0]
           var index = 0;
-          displaySong(current, index)
+          //displaySong(current, index)
         }
     })
   }
