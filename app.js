@@ -20,6 +20,7 @@ $(document).ready(function(){
   $("form").on("submit", function(e) {
      e.preventDefault();
      // prepare the request
+     $("#results").empty();
      $("#results").append(`
         <img src="https://i.imgur.com/k8TI4sY.gif" class="loading">
       `)
@@ -101,7 +102,8 @@ function createButtons(i){
 // reset 
 function resetResults(){
   ytResults = null;
-  selectedCat = null
+  selectedCat = null;
+  spotResults = null;
   $("#results").empty();
   $(".search-wrap").addClass("hide");
 
@@ -283,7 +285,7 @@ function resetResults(){
      $("#results").append($songWrap, btns);
   }
 
-function nextSong(){
+  function nextSong(){
     // youtube 
         var current = $(".currentSong").data("song");
         var next = [spotResults[current+1]]
