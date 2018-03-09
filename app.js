@@ -4,7 +4,7 @@
 
 
 var ytResults = null;
-var spotResukts = null;
+var spotResults = null;
 var selectedCat = null;
 
 
@@ -60,7 +60,7 @@ $(document).ready(function(){
     switch(selectedBtn){
       case "next":
         // if selected catelgoy is youtube
-        nextYoutube();
+        // nextYoutube();
 
         // stop 
       break;
@@ -249,10 +249,10 @@ function resetResults(){
           console.log(tracks)
           //track[0].id
 
-          spotResukts = tracks.tracks
-          console.log(spotResukts);
+          spotResults = tracks.tracks
+          console.log(spotResults);
 
-          var current = spotResukts[0]
+          var current = spotResults[0]
           console.log("crnt",current);
 
           var index = 0;
@@ -275,10 +275,18 @@ function resetResults(){
     var btns = createButtons(i)
     $($songWrap).append(showPlaylist)
      $("#results").append($songWrap, btns);
-
   }
 
-
+function nextTrack(){
+    // youtube 
+        var current = $(".currentSong").data("song");
+        var next = [spotResults[current+1]]
+        var i = current+1
+        if(current < 11){
+          $(".nextBtn").removeClass("hide");
+          displayVideo(next, i);
+        }
+  }
 
 /*//////////////////////END SPOTIFY ///////////////////////////////*/
 
