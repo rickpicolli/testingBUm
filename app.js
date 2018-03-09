@@ -4,6 +4,7 @@
 
 
 var ytResults = null;
+var spotResukts = null;
 var selectedCat = null;
 
 
@@ -31,7 +32,7 @@ $(document).ready(function(){
           break;
 
           case "spotify":
-          getSong();
+          getID();
           break;
 
           case "giphy":
@@ -224,18 +225,52 @@ function resetResults(){
     });
   }
   getToke();
-
-  function getSong(){
-
+  var query = "linkin park"
+  var artistId;
+  function getID(){
+    
     $.ajax({
-        url: 'https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/artist/linkin park/top-tracks',
+        url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/search?q=${query}&type=artist`,
         method: 'GET',
         headers: { "Authorization": "Bearer " + token },
         success: function (result) {
-          console.log(result);
+          artistID = result.artists.items[0].id
+          console.log(artistID);
+          getSong()
         }
     })
   }
+  function getSong(){
+    $.ajax({
+        url: `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/artists/${artistID}/top-tracks?country=US`,
+        method: 'GET',
+        headers: { "Authorization": "Bearer " + token },
+        success: function (tracks) {
+          console.log(tracks)
+          //track[0].id
+          spotResukts = tracks
+          var current = [spotResukts[0]]
+          var index = 0;
+          displaySong(current, index)
+        }
+    })
+  }
+
+  function displaySong(current, i){
+    var songID = current.id
+    var $songWrap = $("<div>");
+    $songWrap.addClass("currentSong")
+    $songWrap.attr("data-song", i)
+    var showPlaylist = $("<iframe>");
+    showPlaylist.attr({ id: "track", src: `https://open.spotify.com/embed?uri=spotify:track:${songID}`, width: "300", height: "380", frameborder: "0", allowtransparency: "true" })
+   
+    var btns = createButtons(i)
+     $("#results").append(showPlaylist, btns);
+
+  }
+
+
+
 /*//////////////////////END SPOTIFY ///////////////////////////////*/
 
 /*////////////////////// GIPHY ///////////////////////////////*/
