@@ -249,7 +249,7 @@ function resetResults(){
           console.log(tracks)
           //track[0].id
           spotResukts = tracks
-          var current = [spotResukts[0]]
+          var current = spotResukts[0]
           var index = 0;
           displaySong(current, index)
         }
@@ -257,7 +257,10 @@ function resetResults(){
   }
 
   function displaySong(current, i){
+    console.log(current);
     var songID = current.id
+    $("#submit").val("search")
+    $("#results").empty();
     var $songWrap = $("<div>");
     $songWrap.addClass("currentSong")
     $songWrap.attr("data-song", i)
@@ -265,7 +268,8 @@ function resetResults(){
     showPlaylist.attr({ id: "track", src: `https://open.spotify.com/embed?uri=spotify:track:${songID}`, width: "300", height: "380", frameborder: "0", allowtransparency: "true" })
    
     var btns = createButtons(i)
-     $("#results").append(showPlaylist, btns);
+    $($songWrap).append(showPlaylist)
+     $("#results").append($songWrap, btns);
 
   }
 
