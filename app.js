@@ -253,7 +253,7 @@ function resetResults(){
           console.log(spotResukts);
 
           var current = spotResukts[0]
-          console.log(""current);
+          console.log("crnt",current);
 
           var index = 0;
           displaySong(current, index)
