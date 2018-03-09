@@ -249,14 +249,14 @@ function resetResults(){
           console.log(tracks)
           //track[0].id
 
-          spotResukts = tracks
+          spotResukts = tracks.tracks
           console.log(spotResukts);
 
           var current = spotResukts[0]
-          console.log(current);
-          
+          console.log(""current);
+
           var index = 0;
-          //displaySong(current, index)
+          displaySong(current, index)
         }
     })
   }
