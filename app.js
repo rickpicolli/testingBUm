@@ -60,7 +60,7 @@ $(document).ready(function(){
     switch(selectedBtn){
       case "next":
         // if selected catelgoy is youtube
-        // nextYoutube();
+        nextSong();
 
         // stop 
       break;
