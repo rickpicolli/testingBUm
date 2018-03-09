@@ -277,7 +277,7 @@ function resetResults(){
      $("#results").append($songWrap, btns);
   }
 
-function nextTrack(){
+function nextSong(){
     // youtube 
         var current = $(".currentSong").data("song");
         var next = [spotResults[current+1]]
