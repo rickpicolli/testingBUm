@@ -251,6 +251,7 @@ function resetResults(){
         method: 'GET',
         headers: { "Authorization": "Bearer " + token },
         success: function (tracks) {
+          $("#search").val("");
           console.log(tracks)
           //track[0].id
 
